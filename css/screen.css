@@ -2,12 +2,31 @@
 #FONTS
 \*------------------------------------*/
 
+@font-face{
+    font-family: "Inter Web";
+    font-weight: 400;
+    src: url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face{
+    font-family: "Inter Web";
+    font-weight: 600;
+    src: url("../fonts/Inter-SemiBold.woff2") format("woff2");
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
-
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF;
+    --global-color-alpha-dark: #2E77E6;
+    --global-color-transparent: #757787;
+    --global-color-x-transparent: #B5B6C0;
+    --global-color-general-text-color: #20223a;
+    --global-color-background-light: #F5F6FA;
+    --global-color-full-white: #fff;
 }
 
 /* CSS variables here */
@@ -23,14 +42,14 @@
 */
 
 html {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    font-family: Inter, arial, sans-serif;
+    color:  var(--global-color-general-text-color);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: var(--global-color-background-light);
 }
 
 *,
@@ -47,14 +66,14 @@ html {
 */
 
 ::-moz-selection {
-    background: HotPink;
-    color: white;
+    background: var(--global-color-alpha);
+    color: var(--global-color-full-white);
     text-shadow: none;
 }
 
 ::selection {
-    background: HotPink;
-    color: white;
+    background: var(--global-color-alpha);
+    color: var(--global-color-full-white);
     text-shadow: none;
 }
 
@@ -158,18 +177,24 @@ hr {
 }
 
 a {
-    color: HotPink;
+    color: var(--global-color-alpha-dark);
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: var(--global-color-alpha);
 }
 
-a:hover,
+a:hover{
+    color: var(--global-color-alpha-light);
+}
 a:focus {
-    color: DeepPink;
+    color: var(--global-color-alpha-light);
+}
+
+label{
+    display: block;
 }
 
 /*------------------------------------*\
@@ -189,6 +214,10 @@ a:focus {
 
 .o-row--login {
     /* stuff here to align the card */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* size modifiers */
@@ -432,11 +461,59 @@ a:focus {
     Website main logo
 */
 
+.c-logo__symbol{
+    height: 100%;
+    display: block;
+}
+
+.c-logo{
+    height: 24px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.c-logo__path{} 
+.c-logo__path--1{
+    fill: #20223A;
+}
+
+.c-logo__path--2{
+    fill: #3385FF;
+}
+
+
+.c-logo__path--3{
+    fill:#1B4186;
+}
+
 /*
     Component: Card
     ---
     Card with box shadow
 */
+
+.c-card{
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.c-card__body{
+    padding: 0% 10% 10% 10%;
+}
+
+.c-card__title{
+    padding-top: 10%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21px;
+}
+
+.c-card__footer{
+    text-align: center;
+    padding: 24px 48px 24px 48px;
+    border-top: 1px solid --global-color-transparent;
+}
 
 /*
     Component: Forms
@@ -451,10 +528,24 @@ a:focus {
 */
 
 .c-input {
-
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;  
+    width: 100%;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-family: inherit;
+    color:inherit;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px;
+    outline: none;
 }
 
 .c-input:focus {
+    border-color:#3385ff;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d; 
 }
 
 /*
@@ -464,13 +555,30 @@ a:focus {
 */
 
 .c-label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274;
+}
 
+.c-label--option{
+    margin-left: 8px;
+    margin-bottom: 0px;
 }
 
 /* If a input is focused within the form-field class change te color of the label */
 
 .c-form-field:focus-within .c-label {
 
+}
+
+.c-form--field{
+    display: block;    
+}
+
+.c-form-field--option{
+    display: inline-flex;
+    align-items: baseline;
 }
 
 /*
@@ -480,19 +588,38 @@ a:focus {
 */
 
 .c-button {
-
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px;
+    background-color: #2E77E6;
+    color:white;
+    border: none;
+    border-radius: 3px;
+    font-family: inherit;
+    font-weight: 600px;
 }
 
 .c-button:hover {
-
+    border-color:#3385ff;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d; 
+    cursor: pointer
 }
 
 .c-button:focus {
+    outline: none;
+    border-color:#3385ff;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d; 
 
 }
 
 .c-button:active {
-
+    border-color:#3385ff;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d; 
+    cursor: pointer
 }
 
 .c-button--block {
@@ -515,6 +642,10 @@ a:focus {
 
 .u-color-neutral-dark {
     color: Black;
+}
+
+.u-color-lighter{
+    color: #757787;
 }
 
 /*
